@@ -8,7 +8,7 @@
 
 ---
 
-## 📖 项目简介
+## 项目简介
 
 本工具用于检测两份中文论文的重复率：给定一份**原文**和一份**抄袭版论文**，程序会输出一个 `[0.00, 1.00]` 之间的浮点数表示重复率，结果保留两位小数。
 
@@ -23,7 +23,7 @@
 
 ---
 
-## 🗂 项目结构
+## 项目结构
 
 ```
 EssayCheck/
@@ -48,7 +48,7 @@ EssayCheck/
 
 ---
 
-## 🚀 快速开始
+## 快速开始
 
 ### 环境要求
 
@@ -84,7 +84,7 @@ java -jar main.jar 测试文本/orig.txt 测试文本/orig_0.8_add.txt 测试文
 
 ---
 
-## 🧠 算法说明
+## 算法说明
 
 ### 核心流程
 
@@ -124,7 +124,7 @@ Similarity.cosineSimilarity   —— 余弦相似度计算
 
 ---
 
-## 🧪 单元测试
+## 单元测试
 
 ### 运行测试
 
@@ -156,7 +156,7 @@ java -cp "lib/*;out;test-out" org.junit.runner.JUnitCore \
 
 ---
 
-## 🛡 异常处理
+## 异常处理
 
 | 异常类型 | 触发场景 | 处理方式 |
 |----------|----------|----------|
@@ -168,7 +168,7 @@ java -cp "lib/*;out;test-out" org.junit.runner.JUnitCore \
 
 ---
 
-## 📊 性能分析
+## 性能分析
 
 使用 IntelliJ IDEA Ultimate 自带的 Profiler（底层集成 Async Profiler）进行 CPU 采样分析。
 
@@ -183,7 +183,7 @@ java -cp "lib/*;out;test-out" org.junit.runner.JUnitCore \
 
 ---
 
-## 📚 参考
+## 参考
 
 - [JUnit 4 官方文档](https://junit.org/junit4/)
 - [Java Flight Recorder](https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/about.htm)
@@ -191,7 +191,7 @@ java -cp "lib/*;out;test-out" org.junit.runner.JUnitCore \
 
 ---
 
-## 📄 License
+##  License
 
 MIT License
 
