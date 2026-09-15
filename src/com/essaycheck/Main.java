@@ -1,5 +1,6 @@
 package com.essaycheck;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Locale;
@@ -40,26 +41,21 @@ public class Main {
         double similarity = 0.0;
 
         try {
-            // 只读命令行传入的两个文件
             String origText = FileIO.readText(origPath);
             String copyText = FileIO.readText(copyPath);
 
-            // 先做 HTML 洗入 + 只保留中文，再做 n-gram 统计，峰值内存更低
             String cleanOrig = TextCleaner.clean(origText);
             String cleanCopy = TextCleaner.clean(copyText);
 
-            // 及时释放原始字符串引用，便于 GC
-            origText = null;
-            copyText = null;
-
             similarity = Similarity.cosineSimilarity(cleanOrig, cleanCopy);
-
-            cleanOrig = null;
-            cleanCopy = null;
-
+        } catch (IOException e) {
+            System.err.println("[文件错误] " + e.getMessage());
+            similarity = 0.0;
+        } catch (IllegalArgumentException e) {
+            System.err.println("[参数错误] " + e.getMessage());
+            similarity = 0.0;
         } catch (Throwable t) {
-            // 读文件/计算失败时，重复率按 0 处理，仍然要写答案文件
-            System.err.println("[警告] 计算失败，重复率按 0 处理: " + t.getMessage());
+            System.err.println("[未知错误] " + t.getMessage());
             similarity = 0.0;
         }
 

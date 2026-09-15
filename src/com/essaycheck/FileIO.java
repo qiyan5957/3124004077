@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.io.UnsupportedEncodingException;
 
 public class FileIO {
     private FileIO() {
@@ -13,11 +14,15 @@ public class FileIO {
         if (path == null) {
             throw new IOException("路径为空");
         }
+        if (!Files.exists(path)) {
+            throw new IOException("文件不存在: " + path);
+        }
         byte[] bytes = Files.readAllBytes(path);
-        String text = EncodingDetector.decode(bytes);
-        // 及时释放字节数组
-        bytes = null;
-        return text;
+        try {
+            return EncodingDetector.decodeStrict(bytes);
+        } catch (UnsupportedEncodingException e) {
+            throw new IOException("文件编码无法识别: " + path, e);
+        }
     }
     /*用 UTF-8 写入答案*/
     public static void writeText(Path path, String content) throws IOException {
