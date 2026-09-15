@@ -1,0 +1,10 @@
+# 编译产物
+out/
+*.class
+
+# IDEA 配置
+.idea/
+*.iml
+
+# 测试结果文件
+测试文本/ans*.txt
